@@ -19,8 +19,9 @@ BuildRequires:  evas-devel >= 0.9.9.038, ewl-devel >= 0.5.1.008
 BuildRequires:  ecore-devel >= 0.9.9.038, edje-devel >= 0.5.0.038
 BuildRequires:  %{mklibname lirc0}-devel, %{mklibname musicbrainz4}-devel
 BuildRequires:  %{mklibname curl4}-devel, %{mklibname taglib0}-devel
-BuildRequires:	edje >= 0.5.0.038, e_dbus >= 0.01
-Buildrequires:	gettext-devel
+BuildRequires:	edje >= 0.5.0.038, e_dbus-devel >= 0.01
+Buildrequires:	gettext-devel, emusic-devel
+requires:	xmms2, mplayer, xine-ui
 
 %description
 Emedia center
@@ -51,7 +52,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(-,root,root)
-%doc AUTHORS ChangeLog COPYING NEWS README TODO
+%doc AUTHORS ChangeLog COPYING NEWS README TODO ENNARC ENNALIRCRC
 %{_bindir}/*
 %{_datadir}/%name
 
