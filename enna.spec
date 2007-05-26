@@ -12,7 +12,7 @@ Version: 	%{version}
 Release: 	%{release}
 License: 	GPL
 Group: 		Graphical desktop/Enlightenment
-URL: 		http://get-e.org/
+URL:		http://www.digital-corner.org/
 Source: 	%{name}-%{version}.tar.bz2
 BuildRoot: 	%{_tmppath}/%{name}-buildroot
 BuildRequires:  evas-devel >= 0.9.9.038, ewl-devel >= 0.5.1.008 
