@@ -14,7 +14,6 @@ License: 	GPL
 Group: 		Graphical desktop/Enlightenment
 URL:		http://www.digital-corner.org/
 Source: 	%{name}-%{version}.tar.bz2
-BuildRoot: 	%{_tmppath}/%{name}-buildroot
 BuildRequires:  evas-devel >= 0.9.9.038, ewl-devel >= 0.5.1.008 
 BuildRequires:  ecore-devel >= 0.9.9.038, edje-devel >= 0.5.0.038
 BuildRequires:  %{mklibname lirc0}-devel, %{mklibname musicbrainz4}-devel
