@@ -1,57 +1,57 @@
 %define	name	enna
-%define	version	0.1.0
+%define	version	0.2.1
 %define release %mkrel 1
 
-%define major 0
-%define libname %mklibname %{name} %major
-%define libnamedev %mklibname %{name} %major -d
-
-Summary: 	Enna is a Emediacenter
+Summary: 	Media center
 Name: 		%{name}
 Version: 	%{version}
 Release: 	%{release}
-License: 	GPL
+License: 	e16-like
 Group: 		Graphical desktop/Enlightenment
 URL:		http://www.digital-corner.org/
-Source: 	%{name}-%{version}.tar.bz2
-BuildRequires:  evas-devel >= 0.9.9.038, ewl-devel >= 0.5.1.008 
-BuildRequires:  ecore-devel >= 0.9.9.038, edje-devel >= 0.5.0.038
-BuildRequires:  %{mklibname lirc0}-devel, %{mklibname musicbrainz4}-devel
-BuildRequires:  %{mklibname curl4}-devel, %{mklibname taglib0}-devel
-BuildRequires:	edje >= 0.5.0.038, e_dbus-devel >= 0.01
-Buildrequires:	gettext-devel, emusic-devel, cvs
-requires:	xmms2, mplayer, xine-ui
+Source: 	%{name}-%{version}.tar.gz
+BuildRequires:  evas-devel >= 0.9.9.038
+BuildRequires:  ewl-devel >= 0.5.1.008 
+BuildRequires:  ecore-devel >= 0.9.9.038
+BuildRequires:  edje-devel >= 0.5.0.038
+BuildRequires:  lirc-devel
+BuildRequires:  musicbrainz-devel
+BuildRequires:  curl-devel
+BuildRequires:  taglib-devel
+BuildRequires:	edje >= 0.5.0.038
+BuildRequires:  e_dbus-devel >= 0.01
+Buildrequires:	gettext-devel
+Requires:	xmms2
+Requires:	mplayer
+Requires:	xine-ui
 
 %description
-Emedia center
+A media center based on the Enlightenment libraries.
 
 %prep
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 %setup -q
 
 %build
-./autogen.sh
 %configure2_5x
 %make
 
 %install
-rm -rf $RPM_BUILD_ROOT
-%makeinstall
+rm -rf %{buildroot}
+%makeinstall_std
 
-# %lang(fr) /usr/share/locale/fr/LC_MESSAGES/ephoto.mo
 %find_lang %{name}
-for mo in `ls %buildroot%_datadir/locale/` ;
+for mo in `ls %buildroot%{_datadir}/locale/` ;
 do Y=`echo -n $mo | sed -e "s|/||"`;
-echo "%lang($Y) $(echo %_datadir/locale/${mo}/LC_MESSAGES/%{name}.mo)" >> $RPM_BUILD_DIR/%{name}-%{version}/%{name}.lang
+echo "%lang($Y) $(echo %{_datadir}/locale/${mo}/LC_MESSAGES/%{name}.mo)" >> $RPM_BUILD_DIR/%{name}-%{version}/%{name}.lang
 done
 
-
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %files -f %{name}.lang
 %defattr(-,root,root)
-%doc AUTHORS ChangeLog COPYING NEWS README TODO ENNARC ENNALIRCRC
+%doc AUTHORS ChangeLog COPYING NEWS README TODO
 %{_bindir}/*
-%{_datadir}/%name
+%{_datadir}/%{name}
 
