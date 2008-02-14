@@ -8,6 +8,7 @@ Version: 	%{version}
 Release: 	%{release}
 License: 	e16-like
 Group: 		Graphical desktop/Enlightenment
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 URL:		http://www.digital-corner.org/
 Source: 	%{name}-%{version}.tar.gz
 BuildRequires:  evas-devel >= 0.9.9.038
