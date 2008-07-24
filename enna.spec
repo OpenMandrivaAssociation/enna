@@ -1,6 +1,6 @@
 %define	name	enna
 %define	version	0.2.1
-%define release %mkrel 1
+%define release %mkrel 3
 
 Summary: 	Media center
 Name: 		%{name}
