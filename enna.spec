@@ -1,6 +1,6 @@
 %define	name	enna
-%define	version	0.2.1
-%define release %mkrel 3
+%define	version	0.3.0
+%define release %mkrel 1
 
 Summary: 	Media center
 Name: 		%{name}
@@ -11,16 +11,16 @@ Group: 		Graphical desktop/Enlightenment
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 URL:		http://www.digital-corner.org/
 Source: 	%{name}-%{version}.tar.gz
-BuildRequires:  evas-devel >= 0.9.9.038
-BuildRequires:  ewl-devel >= 0.5.1.008 
-BuildRequires:  ecore-devel >= 0.9.9.038
-BuildRequires:  edje-devel >= 0.5.0.038
+BuildRequires:  evas-devel >= 0.9.9.050
+BuildRequires:  ewl-devel >= 0.5.3.050
+BuildRequires:  ecore-devel >= 0.9.9.050
+BuildRequires:  edje-devel >= 0.5.0.050
 BuildRequires:  lirc-devel
 BuildRequires:  musicbrainz-devel
 BuildRequires:  curl-devel
 BuildRequires:  taglib-devel
-BuildRequires:	edje >= 0.5.0.038
-BuildRequires:  e_dbus-devel >= 0.01
+BuildRequires:	edje >= 0.9.9.050
+BuildRequires:  e_dbus-devel >= 0.5.0.50
 Buildrequires:	gettext-devel
 Requires:	xmms2
 Requires:	mplayer
