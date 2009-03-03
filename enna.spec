@@ -2,6 +2,10 @@
 %define	version	0.3.0
 %define release %mkrel 1
 
+%define major 0
+%define libname %mklibname %{name} %major
+%define libnamedev %mklibname %{name} -d
+
 Summary: 	Media center
 Name: 		%{name}
 Version: 	%{version}
@@ -29,6 +33,15 @@ Requires:	xine-ui
 %description
 A media center based on the Enlightenment libraries.
 
+%package -n %libnamedev
+Summary: Headers and development libraries from %{name}
+Group: Development/Other
+Requires: %libname = %{version}-%{release}
+Provides: %{name}-devel = %{version}-%{release}
+
+%description -n %libnamedev
+%{name} development headers and libraries.
+
 %prep
 rm -rf %{buildroot}
 %setup -q
@@ -55,4 +68,10 @@ rm -rf %{buildroot}
 %doc AUTHORS ChangeLog COPYING NEWS README TODO
 %{_bindir}/*
 %{_datadir}/%{name}
+%{_libdir}/%name/modules/*.so
+%{_datadir}/applications/%{name}.desktop
 
+%files -n %libnamedev
+%defattr(-,root,root)
+%{_libdir}/*.a
+%{_libdir}/*.la
