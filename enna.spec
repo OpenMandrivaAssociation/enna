@@ -73,5 +73,5 @@ rm -rf %{buildroot}
 
 %files -n %libnamedev
 %defattr(-,root,root)
-%{_libdir}/*.a
-%{_libdir}/*.la
+%{_libdir}/%name/modules/*.a
+%{_libdir}/%name/modules/*.la
