@@ -19,7 +19,7 @@ BuildRequires:  lirc-devel
 BuildRequires:  musicbrainz-devel
 BuildRequires:  curl-devel
 BuildRequires:  taglib-devel
-BuildRequires:	edje >= 0.9.9.050
+BuildRequires:	edje >= 0.9.9.050,  embryo >= 0.9.9.050
 BuildRequires:  e_dbus-devel >= 0.5.0.50
 Buildrequires:	gettext-devel
 Requires:	xmms2
