@@ -33,17 +33,7 @@ Requires:	xine-ui
 %description
 A media center based on the Enlightenment libraries.
 
-%package -n %libnamedev
-Summary: Headers and development libraries from %{name}
-Group: Development/Other
-Requires: %libname = %{version}-%{release}
-Provides: %{name}-devel = %{version}-%{release}
-
-%description -n %libnamedev
-%{name} development headers and libraries.
-
 %prep
-rm -rf %{buildroot}
 %setup -q
 
 %build
@@ -55,10 +45,8 @@ rm -rf %{buildroot}
 %makeinstall_std
 
 %find_lang %{name}
-for mo in `ls %buildroot%{_datadir}/locale/` ;
-do Y=`echo -n $mo | sed -e "s|/||"`;
-echo "%lang($Y) $(echo %{_datadir}/locale/${mo}/LC_MESSAGES/%{name}.mo)" >> $RPM_BUILD_DIR/%{name}-%{version}/%{name}.lang
-done
+
+rm -f %buildroot%{_libdir}/%name/modules/*.{a,la}
 
 %clean
 rm -rf %{buildroot}
@@ -70,8 +58,3 @@ rm -rf %{buildroot}
 %{_datadir}/%{name}
 %{_libdir}/%name/modules/*.so
 %{_datadir}/applications/%{name}.desktop
-
-%files -n %libnamedev
-%defattr(-,root,root)
-%{_libdir}/%name/modules/*.a
-%{_libdir}/%name/modules/*.la
