@@ -1,6 +1,6 @@
 %define	name	enna
 %define	version	0.3.0
-%define release %mkrel 3
+%define release %mkrel 4
 
 %define major 0
 %define libname %mklibname %{name} %major
@@ -15,16 +15,14 @@ Group: 		Graphical desktop/Enlightenment
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 URL:		http://www.digital-corner.org/
 Source: 	%{name}-%{version}.tar.bz2
-BuildRequires:  evas-devel >= 0.9.9.050
-BuildRequires:  ewl-devel >= 0.5.3.050
+BuildRequires:  evas-devel >= 0.9.9.052
 BuildRequires:  ecore-devel >= 0.9.9.050
 BuildRequires:  edje-devel >= 0.5.0.050
+BuildRequires:	e_dbus-devel >= 0.5.0.050
 BuildRequires:  lirc-devel
-BuildRequires:  musicbrainz-devel
 BuildRequires:  curl-devel
 BuildRequires:  taglib-devel
 BuildRequires:	edje >= 0.9.9.050,  embryo >= 0.9.9.050
-BuildRequires:  e_dbus-devel >= 0.5.0.50
 Buildrequires:	gettext-devel
 Requires:	xmms2
 Requires:	mplayer
@@ -34,9 +32,10 @@ Requires:	xine-ui
 A media center based on the Enlightenment libraries.
 
 %prep
-%setup -q
+%setup -q -n %{name}
 
 %build
+NOCONFIGURE=yes ./autogen.sh
 %configure2_5x
 %make
 
