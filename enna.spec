@@ -12,7 +12,6 @@ Version: 	%{version}
 Release: 	%{release}
 License: 	e16-like
 Group: 		Graphical desktop/Enlightenment
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 URL:		http://www.digital-corner.org/
 Source: 	%{name}-%{version}.tar.bz2
 BuildRequires:  evas-devel >= 0.9.9.052
@@ -22,11 +21,15 @@ BuildRequires:	e_dbus-devel >= 0.5.0.050
 BuildRequires:  lirc-devel
 BuildRequires:  curl-devel
 BuildRequires:  taglib-devel
+BuildRequires:  libexif-devel
+BuildRequires:  libcddb-devel
+BuildRequires:  hal-devel
 BuildRequires:	edje >= 0.9.9.050,  embryo >= 0.9.9.050
 Buildrequires:	gettext-devel
 Requires:	xmms2
 Requires:	mplayer
 Requires:	xine-ui
+BuildRoot: %{_tmppath}/%{name}-%{version}
 
 %description
 A media center based on the Enlightenment libraries.
