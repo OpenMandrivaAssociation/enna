@@ -24,6 +24,7 @@ BuildRequires:  taglib-devel
 BuildRequires:  libexif-devel
 BuildRequires:  libcddb-devel
 BuildRequires:  hal-devel
+BuildRequires:  libc-ares-devel
 BuildRequires:	edje >= 0.9.9.050,  embryo >= 0.9.9.050
 Buildrequires:	gettext-devel
 Requires:	xmms2
