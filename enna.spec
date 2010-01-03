@@ -25,9 +25,8 @@ BuildRequires:	elementary-devel >= 0.6.0.063
 BuildRequires:	dbus-devel >= 1.2.0
 BuildRequires:	libplayer-devel >= 1.0.0
 BuildRequires:	libvalhalla-devel >= 1.0.0
-Requires:	xmms2
-Requires:	mplayer
-Requires:	xine-ui
+BuildRequires:	libcddb-devel
+BuildRequires:	lirc-devel
 BuildRoot: %{_tmppath}/%{name}-%{version}
 
 %description
@@ -37,7 +36,7 @@ A media center based on the Enlightenment libraries.
 %setup -q -n %{name}-%{version}
 
 %build
-%configure2_5x
+%configure2_5x --disable-rpath --disable-static
 %make
 
 %install
@@ -45,8 +44,6 @@ rm -rf %{buildroot}
 %makeinstall_std
 
 %find_lang %{name}
-
-rm -f %buildroot%{_libdir}/%name/modules/*.{a,la}
 
 %clean
 rm -rf %{buildroot}
@@ -56,5 +53,5 @@ rm -rf %{buildroot}
 %doc AUTHORS ChangeLog COPYING NEWS README TODO
 %{_bindir}/*
 %{_datadir}/%{name}
-%{_libdir}/%name/modules/*.so
+%{_datadir}/pixmaps/*.png
 %{_datadir}/applications/%{name}.desktop
