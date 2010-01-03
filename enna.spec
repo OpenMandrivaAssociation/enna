@@ -1,6 +1,6 @@
 %define	name	enna
-%define	version	0.3.0
-%define release %mkrel 6
+%define	version	0.4.0
+%define release %mkrel 1
 
 %define major 0
 %define libname %mklibname %{name} %major
@@ -12,21 +12,19 @@ Version: 	%{version}
 Release: 	%{release}
 License: 	e16-like
 Group: 		Graphical desktop/Enlightenment
-URL:		http://www.digital-corner.org/
-Source: 	%{name}-%{version}.tar.bz2
-BuildRequires:  evas-devel >= 0.9.9.052
-BuildRequires:  ecore-devel >= 0.9.9.050
-BuildRequires:  edje-devel >= 0.5.0.050
-BuildRequires:	e_dbus-devel >= 0.5.0.050
-BuildRequires:  lirc-devel
-BuildRequires:  curl-devel
-BuildRequires:  taglib-devel
-BuildRequires:  libexif-devel
-BuildRequires:  libcddb-devel
-BuildRequires:  hal-devel
-BuildRequires:  libc-ares-devel
-BuildRequires:	edje >= 0.9.9.050,  embryo >= 0.9.9.050
-Buildrequires:	gettext-devel
+URL:		http://enna.geexbox.org/
+Source: 	http://enna.geexbox.org/releases/%{name}-%{version}.tar.bz2
+BuildRequires:  evas-devel >= 0.9.9.063
+BuildRequires:  ecore-devel >= 0.9.9.063
+BuildRequires:	edje >= 0.9.9.063
+BuildRequires:  edje-devel >= 0.5.0.0063
+BuildRequires:	eet-devel >= 1.2.2
+BuildRequires:	embryo >= 0.9.9.063
+BuildRequires:	embryo-devel >= 0.9.9.063
+BuildRequires:	elementary-devel >= 0.6.0.063
+BuildRequires:	dbus-devel >= 1.2.0
+BuildRequires:	libplayer-devel >= 1.0.0
+BuildRequires:	libvalhalla-devel >= 1.0.0
 Requires:	xmms2
 Requires:	mplayer
 Requires:	xine-ui
@@ -36,10 +34,9 @@ BuildRoot: %{_tmppath}/%{name}-%{version}
 A media center based on the Enlightenment libraries.
 
 %prep
-%setup -q -n %{name}
+%setup -q -n %{name}-%{version}
 
 %build
-NOCONFIGURE=yes ./autogen.sh
 %configure2_5x
 %make
 
