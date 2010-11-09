@@ -1,6 +1,6 @@
 %define	name	enna
-%define	version	0.4.0
-%define release %mkrel 1
+%define	version	0.4.1
+%define release %mkrel 0.1
 
 %define major 0
 %define libname %mklibname %{name} %major
@@ -13,20 +13,29 @@ Release: 	%{release}
 License: 	e16-like
 Group: 		Graphical desktop/Enlightenment
 URL:		http://enna.geexbox.org/
-Source: 	http://enna.geexbox.org/releases/%{name}-%{version}.tar.bz2
-BuildRequires:  evas-devel >= 0.9.9.063
-BuildRequires:  ecore-devel >= 0.9.9.063
-BuildRequires:	edje >= 0.9.9.063
-BuildRequires:  edje-devel >= 0.5.0.0063
-BuildRequires:	eet-devel >= 1.2.2
-BuildRequires:	embryo >= 0.9.9.063
-BuildRequires:	embryo-devel >= 0.9.9.063
-BuildRequires:	elementary-devel >= 0.6.0.063
+Source: 	http://enna.geexbox.org/releases/%{name}-%{version}.tar.xz
+BuildRequires:  evas-devel >= 0.9.9.49898
+BuildRequires:  ecore-devel >= 0.9.9.49898
+BuildRequires:	edje >= 0.9.9.49898
+BuildRequires:  edje-devel >= 0.9.9.49898
+BuildRequires:	eet-devel >= 1.3.2
+BuildRequires:	elementary-devel >= 0.7.0.49898
+BuildRequires:	embryo
 BuildRequires:	dbus-devel >= 1.2.0
-BuildRequires:	libplayer-devel >= 1.0.0
-BuildRequires:	libvalhalla-devel >= 1.0.0
+BuildRequires:	ethumb-devel
+BuildRequires:	libplayer-devel >= 2.0.0
+BuildRequires:	libvalhalla-devel >= 2.0.0
+BuildRequires:	gupnp-av-devel
 BuildRequires:	libcddb-devel
 BuildRequires:	lirc-devel
+BuildRequires:	curl-devel
+BuildRequires:	libxml2-devel
+BuildRequires:	gettext-devel
+BuildRequires:	udev-devel
+BuildRequires:	libxdg-basedir-devel
+BuildRequires:	libxrandr-devel
+BuildRequires:	bluez-devel
+BuildRequires:	cwiid-devel
 BuildRoot: %{_tmppath}/%{name}-%{version}
 
 %description
@@ -36,7 +45,8 @@ A media center based on the Enlightenment libraries.
 %setup -q -n %{name}-%{version}
 
 %build
-%configure2_5x --disable-rpath --disable-static
+NOCONFIGURE=yes ./autogen.sh
+%configure2_5x --disable-rpath --disable-static --disable-static-modules
 %make
 
 %install
@@ -45,6 +55,8 @@ rm -rf %{buildroot}
 
 %find_lang %{name}
 
+rm -f %{buildroot}%{_libdir}/enna/modules/*.la
+
 %clean
 rm -rf %{buildroot}
 
@@ -52,6 +64,8 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %doc AUTHORS ChangeLog COPYING NEWS README TODO
 %{_bindir}/*
+%{_libdir}/enna/modules/*.so
 %{_datadir}/%{name}
-%{_datadir}/pixmaps/*.png
+%{_datadir}/pixmaps/*
+%{_mandir}/man1/enna.1.*
 %{_datadir}/applications/%{name}.desktop
