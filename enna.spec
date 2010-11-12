@@ -32,7 +32,7 @@ BuildRequires:	curl-devel
 BuildRequires:	libxml2-devel
 BuildRequires:	gettext-devel
 BuildRequires:	udev-devel
-BuildRequires:	libxdg-basedir-devel
+BuildRequires:	xdg-basedir-devel
 BuildRequires:	libxrandr-devel
 BuildRequires:	bluez-devel
 BuildRequires:	cwiid-devel
