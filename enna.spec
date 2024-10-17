@@ -12,7 +12,7 @@ Version: 	%{version}
 Release: 	%{release}
 License: 	e16-like
 Group: 		Graphical desktop/Enlightenment
-URL:		http://enna.geexbox.org/
+URL:		https://enna.geexbox.org/
 Source: 	http://enna.geexbox.org/releases/%{name}-%{version}.tar.xz
 BuildRequires:  evas-devel >= 0.9.9.49898
 BuildRequires:  ecore-devel >= 0.9.9.49898
